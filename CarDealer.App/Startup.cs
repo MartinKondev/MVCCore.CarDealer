@@ -23,7 +23,8 @@ namespace CarDealer.App
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<CarDealerDbContext>(o => o.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=CarDealer;Trusted_Connection=True;MultipleActiveResultSets=true"));
+            services.AddDbContext<CarDealerDbContext>(o => o.
+                UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=CarDealer;Trusted_Connection=True;MultipleActiveResultSets=true"));
             services.AddMvc();
         }
 

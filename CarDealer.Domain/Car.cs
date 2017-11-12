@@ -7,7 +7,7 @@
     {
         public Car()
         {
-            PartCars = new HashSet<PartCar>();
+            Parts = new HashSet<PartCar>();
             Sales = new HashSet<Sale>();
         }
 
@@ -23,7 +23,7 @@
         [Range(0, int.MaxValue)]
         public long TravelledDistance { get; set; }
 
-        public ICollection<PartCar> PartCars { get; set; }
+        public ICollection<PartCar> Parts { get; set; }
 
         public ICollection<Sale> Sales { get; set; }
     }

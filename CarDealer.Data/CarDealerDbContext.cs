@@ -23,35 +23,37 @@
         {
             modelBuilder
                 .Entity<Sale>()
-                .HasOne<Customer>()
-                .WithMany(x => x.Sales)
-                .HasForeignKey(x => x.CustomerId)
-                .HasForeignKey(x => x.CarId);
+                .HasOne(s => s.Car)
+                .WithMany(c => c.Sales)
+                .HasForeignKey(s => s.Car_Id);
 
             modelBuilder
                 .Entity<Sale>()
-                .HasOne<Car>()
-                .WithMany(x => x.Sales);
-
-
-            modelBuilder
-                .Entity<Car>()
-                .HasMany<PartCar>()
-                .WithOne(x => x.Car)
-                .HasForeignKey(x => x.CarId);
-
-            modelBuilder
-                .Entity<Part>()
-                .HasMany<PartCar>()
-                .WithOne(x => x.Part)
-                .HasForeignKey(x => x.PartId);
-           
+                .HasOne(s => s.Customer)
+                .WithMany(c => c.Sales)
+                .HasForeignKey(s => s.Customer_Id);
 
             modelBuilder
                 .Entity<Supplier>()
-                .HasMany<Part>()
-                .WithOne(x => x.Supplier)
-                .HasForeignKey(x => x.SupplierId);
+                .HasMany(s => s.Parts)
+                .WithOne(p => p.Supplier)
+                .HasForeignKey(p => p.Supplier_Id);
+
+            modelBuilder
+                .Entity<PartCar>()
+                .HasKey(pc => new { pc.Car_Id, pc.Part_Id });
+
+            modelBuilder
+                .Entity<PartCar>()
+                .HasOne(pc => pc.Part)
+                .WithMany(p => p.Cars);
+
+            modelBuilder
+                .Entity<PartCar>()
+                .HasOne(pc => pc.Car)
+                .WithMany(c => c.Parts);
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

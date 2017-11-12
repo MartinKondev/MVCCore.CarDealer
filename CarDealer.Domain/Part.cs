@@ -7,7 +7,7 @@
     {
         public Part()
         {
-            PartCars = new HashSet<PartCar>();
+            Cars = new HashSet<PartCar>();
         }
 
         public int Id { get; set; }
@@ -20,9 +20,9 @@
         [Required]
         public int Quantity { get; set; }
 
-        public ICollection<PartCar> PartCars { get; set; }
+        public ICollection<PartCar> Cars { get; set; }
 
-        public int SupplierId { get; set; }
+        public int Supplier_Id { get; set; }
         public virtual Supplier Supplier { get; set; }
     }
 }

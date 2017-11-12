@@ -6,11 +6,11 @@ namespace CarDealer.Domain
     {
         public int Id { get; set; }
 
-        public int CarId { get; set; }
+        public int Car_Id { get; set; }
         [Required]
         public virtual Car Car { get; set; }
 
-        public int CustomerId { get; set; }
+        public int Customer_Id { get; set; }
         [Required]
         public virtual Customer Customer { get; set; }
 
