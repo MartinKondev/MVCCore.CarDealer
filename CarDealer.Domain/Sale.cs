@@ -17,3 +17,4 @@ namespace CarDealer.Domain
         public double Discount { get; set; }
     }
 }
+ 
