@@ -69,9 +69,7 @@ namespace CarDealer.Data.Migrations
                     b.Property<int>("Quantity");
 
                     b.Property<int>("SupplierId");
-
-                    b.Property<int?>("SupplierId1");
-
+                    
                     b.HasKey("Id");
 
                     b.HasIndex("SupplierId");
@@ -88,21 +86,13 @@ namespace CarDealer.Data.Migrations
 
                     b.Property<int>("CarId");
 
-                    b.Property<int?>("CarId1");
-
                     b.Property<int>("PartId");
-
-                    b.Property<int?>("PartId1");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CarId");
 
-                    b.HasIndex("CarId1");
-
                     b.HasIndex("PartId");
-
-                    b.HasIndex("PartId1");
 
                     b.ToTable("PartCars");
                 });
@@ -114,10 +104,6 @@ namespace CarDealer.Data.Migrations
 
                     b.Property<int>("CarId");
 
-                    b.Property<int>("CarId1");
-
-                    b.Property<int>("CarId2");
-
                     b.Property<int>("CustomerId");
 
                     b.Property<int>("CustomerId1");
@@ -127,10 +113,6 @@ namespace CarDealer.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CarId");
-
-                    b.HasIndex("CarId1");
-
-                    b.HasIndex("CarId2");
 
                     b.HasIndex("CustomerId1");
 

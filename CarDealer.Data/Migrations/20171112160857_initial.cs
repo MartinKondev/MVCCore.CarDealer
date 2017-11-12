@@ -128,19 +128,9 @@ namespace CarDealer.Data.Migrations
                 column: "CarId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PartCars_CarId1",
-                table: "PartCars",
-                column: "CarId1");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_PartCars_PartId",
                 table: "PartCars",
                 column: "PartId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_PartCars_PartId1",
-                table: "PartCars",
-                column: "PartId1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Parts_SupplierId",
@@ -156,21 +146,6 @@ namespace CarDealer.Data.Migrations
                 name: "IX_Sales_CarId",
                 table: "Sales",
                 column: "CarId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Sales_CarId1",
-                table: "Sales",
-                column: "CarId1");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Sales_CarId2",
-                table: "Sales",
-                column: "CarId2");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Sales_CustomerId1",
-                table: "Sales",
-                column: "CustomerId1");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
