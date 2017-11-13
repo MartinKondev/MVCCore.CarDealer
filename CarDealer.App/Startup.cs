@@ -23,13 +23,16 @@ namespace CarDealer.App
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<DBInitializer>();
             services.AddDbContext<CarDealerDbContext>(o => o.
                 UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=CarDealer;Trusted_Connection=True;MultipleActiveResultSets=true"));
             services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, 
+                                IHostingEnvironment env,
+                                DBInitializer dbInitializer)
         {
             if (env.IsDevelopment())
             {
@@ -49,6 +52,8 @@ namespace CarDealer.App
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            dbInitializer.Seed().Wait();
         }
     }
 }
