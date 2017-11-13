@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using CarDealer.Data;
 using Microsoft.EntityFrameworkCore;
+using CarDealer.Services;
 
 namespace CarDealer.App
 {
@@ -25,6 +26,9 @@ namespace CarDealer.App
         {
             services.AddDbContext<CarDealerDbContext>(o => o.
                 UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=CarDealer;Trusted_Connection=True;MultipleActiveResultSets=true"));
+
+            services.AddTransient<ICustomerService, CustomerService>();
+
             services.AddMvc();
         }
 
@@ -45,6 +49,10 @@ namespace CarDealer.App
 
             app.UseMvc(routes =>
             {
+                routes.MapRoute(
+                    name: "customers",
+                    template: "{controller=customer}/{action=all}/{sortOrder}");
+
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");

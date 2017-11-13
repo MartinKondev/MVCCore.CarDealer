@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarDealer.App", "CarDealer.App\CarDealer.App.csproj", "{71BD3A6E-BAFD-4AE2-BD61-FD955105EC8E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarDealer.App", "CarDealer.App\CarDealer.App.csproj", "{71BD3A6E-BAFD-4AE2-BD61-FD955105EC8E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarDealer.Data", "CarDealer.Data\CarDealer.Data.csproj", "{E58D3717-3FC9-4BC6-A21E-36BCB42A7170}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarDealer.Data", "CarDealer.Data\CarDealer.Data.csproj", "{E58D3717-3FC9-4BC6-A21E-36BCB42A7170}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarDealer.Domain", "CarDealer.Domain\CarDealer.Domain.csproj", "{92F802D7-8BA3-413C-9184-51A8C23D5546}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarDealer.Domain", "CarDealer.Domain\CarDealer.Domain.csproj", "{92F802D7-8BA3-413C-9184-51A8C23D5546}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarDealer.Services", "CarDealer.Services\CarDealer.Services.csproj", "{C066CC92-F959-4B37-B01E-84E579EA4B57}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{92F802D7-8BA3-413C-9184-51A8C23D5546}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{92F802D7-8BA3-413C-9184-51A8C23D5546}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{92F802D7-8BA3-413C-9184-51A8C23D5546}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C066CC92-F959-4B37-B01E-84E579EA4B57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C066CC92-F959-4B37-B01E-84E579EA4B57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C066CC92-F959-4B37-B01E-84E579EA4B57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C066CC92-F959-4B37-B01E-84E579EA4B57}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
