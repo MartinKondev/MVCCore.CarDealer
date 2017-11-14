@@ -29,6 +29,7 @@ namespace CarDealer.App
                 UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=CarDealer;Trusted_Connection=True;MultipleActiveResultSets=true"));
 
             services.AddTransient<ICustomerService, CustomerService>();
+            services.AddTransient<ICarService, CarService>();
 
             services.AddMvc();
         }
@@ -52,6 +53,10 @@ namespace CarDealer.App
 
             app.UseMvc(routes =>
             {
+                routes.MapRoute(
+                    name: "carsByMake",
+                    template: "{contrroller=car}/{action=CarsFromMake}/{make}");
+
                 routes.MapRoute(
                     name: "customers",
                     template: "{controller=customer}/{action=all}/{sortOrder}");

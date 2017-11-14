@@ -9,13 +9,10 @@ using CarDealer.Services.Models;
 
 namespace CarDealer.Services
 {
-    public class CustomerService : ICustomerService
+    public class CustomerService : BaseService, ICustomerService
     {
-        private readonly CarDealerDbContext db;
-
-        public CustomerService(CarDealerDbContext _db)
+        public CustomerService(CarDealerDbContext _db) : base(_db)
         {
-            db = _db;
         }
 
         public IList<CustomerModel> OrderedCustomers(SortOrder sortOrder)
@@ -42,8 +39,6 @@ namespace CarDealer.Services
                     IsYoungDriver = c.IsYoungDriver
                 })
                 .ToList();
-        }
-
-     
+        }     
     }
 }

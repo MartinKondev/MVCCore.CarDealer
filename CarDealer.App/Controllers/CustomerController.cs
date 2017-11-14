@@ -25,7 +25,7 @@ namespace CarDealer.App.Controllers
             return View(new AllCustomersModel
             {
                 Customers = result,
-                sortOrder = sortOrder
+                SortOrder = sortOrder
             });
         }
     }

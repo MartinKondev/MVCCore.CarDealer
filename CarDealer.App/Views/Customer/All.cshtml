@@ -1,12 +1,26 @@
 ﻿@using CarDealer.Services.Models
 @model AllCustomersModel
 
-@ViewData["Title"] =  "View All Customers"
+@{ViewData["Title"] = "View All Customers";}
 
 <h2>All Customers - @Model.SortOrder</h2>
 
 <table>
     <thead>
-        <td></td>
+        <tr>
+            <td>Name</td>
+            <td>Birthday</td>
+            <td>Is Young Driver</td>
+        </tr>
     </thead>
+    <tbody>
+        @foreach (var customer in Model.Customers)
+        {
+            <tr>
+                <td>@customer.Name</td>
+                <td>@customer.BirthDate</td>
+                <td>@customer.IsYoungDriver</td>
+            </tr>
+        }
+    </tbody>
 </table>
