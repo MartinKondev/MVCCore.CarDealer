@@ -35,7 +35,7 @@ namespace CarDealer.Services
             sum += p.Quantity * p.Price.Value;
         }
 
-        public IList<CustomerModel> OrderedCustomers(SortOrder sortOrder)
+        public IEnumerable<CustomerModel> OrderedCustomers(SortOrder sortOrder)
         {
             var customersQuery = db.Customers.AsQueryable();
             switch (sortOrder)

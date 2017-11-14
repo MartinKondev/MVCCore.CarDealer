@@ -26,15 +26,11 @@ namespace CarDealer.App
         {
             services.AddTransient<DBInitializer>();
             services.AddDbContext<CarDealerDbContext>(o => o.
-                UseSqlServer(
-         "Server=(localdb)\\mssqllocaldb;Initial Catalog=CarDealer;Trusted_Connection=True;MultipleActiveResultSets=true"
-         // "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=CarDealer;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"
-         //"Data Source=.;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"
-));
-
+                UseSqlServer("Server=(localdb)\\mssqllocaldb;Initial Catalog=CarDealer;Trusted_Connection=True;MultipleActiveResultSets=true"));
             services.AddTransient<ICustomerService, CustomerService>();
             services.AddTransient<ICarService, CarService>();
             services.AddTransient<ISupplierService, SupplierService>();
+            services.AddTransient<ISalesService, SalesService>();
 
             services.AddMvc();
         }
@@ -75,7 +71,7 @@ namespace CarDealer.App
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            dbInitializer.Seed().Wait();
+            //dbInitializer.Seed().Wait();
         }
     }
 }

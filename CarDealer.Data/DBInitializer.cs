@@ -23,7 +23,9 @@ namespace CarDealer.Data
         }
 
         public async Task Seed()
-        {   
+        {
+            ResetDb(context);
+
             if (!context.Cars.Any())
             {
                 await context.AddRangeAsync(_cars());

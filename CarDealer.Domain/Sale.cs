@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace CarDealer.Domain
 {
@@ -16,6 +17,10 @@ namespace CarDealer.Domain
         public virtual Customer Customer { get; set; }
 
         public decimal Discount { get; set; }
+
+        //public decimal Price { get => Car.Parts.Sum(p => p.Part.Price.Value * p.Part.Quantity); }
+
+        //public decimal PriceAfterDiscount { get => Price - Price * Discount; }
     }
 }
  
