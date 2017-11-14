@@ -14,7 +14,26 @@ namespace CarDealer.Services
         {
         }
 
-        public IEnumerable<CarModel> CarFromMake(string carMake)
+        public IEnumerable<CarWithItsPartsModel> GetCarWithItsPartsById(int Id)
+        {
+            var cars = db.Cars
+                .Select(c => new CarWithItsPartsModel
+                {
+                    Make = c.Make,
+                    Model = c.Model,
+                    TravelledDistance = c.TravelledDistance,
+                    Parts = c.Parts.Select(p => new PartBasicModel
+                    {
+                        Name = p.Part.Name,
+                        Price = p.Part.Price
+                    })
+                    .ToList()
+                })
+                .ToList();
+            return cars;
+        }
+
+        public IEnumerable<CarModel> GetCarFromMake(string carMake)
         {
             return db.Cars
                 .OrderBy(c => c.Model)

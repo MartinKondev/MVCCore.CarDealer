@@ -19,6 +19,16 @@ namespace CarDealer.App.Controllers
             _customerService = service;
         }
 
+        //GET
+        //Customer/{id}
+        public IActionResult Index(int id)
+        {
+            var result = _customerService.GetCustomerWithBuysById(id);
+            return View(result);
+        }
+
+        //GET
+        //Customer/all
         public IActionResult All(SortOrder sortOrder)
         {
             var result = _customerService.OrderedCustomers(sortOrder);

@@ -26,7 +26,11 @@ namespace CarDealer.App
         {
             services.AddTransient<DBInitializer>();
             services.AddDbContext<CarDealerDbContext>(o => o.
-                UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=CarDealer;Trusted_Connection=True;MultipleActiveResultSets=true"));
+                UseSqlServer(
+         "Server=(localdb)\\mssqllocaldb;Initial Catalog=CarDealer;Trusted_Connection=True;MultipleActiveResultSets=true"
+         // "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=CarDealer;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"
+         //"Data Source=.;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"
+));
 
             services.AddTransient<ICustomerService, CustomerService>();
             services.AddTransient<ICarService, CarService>();
@@ -54,20 +58,19 @@ namespace CarDealer.App
 
             app.UseMvc(routes =>
               {
-            //    routes.MapRoute(
-            //        name: "suppliersDefault",
-            //        template: "suppliers/{action=Index}/{supplierType}"),
-            //        a;
-
                 routes.MapRoute(
                     name: "carsByMake",
                     template: "car/{action=CarsFromMake}/{make}");
 
-                routes.MapRoute(
-                    name: "customers",
-                    template: "customer/{action=all}/{sortOrder}");
+                  routes.MapRoute(
+                      name: "customersById",
+                      template: "customer/index/{id}");
 
-                routes.MapRoute(
+                  routes.MapRoute(
+                      name: "customers",
+                      template: "customer/{action=all}/{sortOrder}");
+
+                  routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });

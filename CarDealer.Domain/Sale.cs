@@ -7,6 +7,7 @@ namespace CarDealer.Domain
         public int Id { get; set; }
 
         public int Car_Id { get; set; }
+
         [Required]
         public virtual Car Car { get; set; }
 
@@ -14,7 +15,7 @@ namespace CarDealer.Domain
         [Required]
         public virtual Customer Customer { get; set; }
 
-        public double Discount { get; set; }
+        public decimal Discount { get; set; }
     }
 }
  

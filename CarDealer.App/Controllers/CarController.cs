@@ -17,9 +17,18 @@ namespace CarDealer.App.Controllers
         }
 
         //GET
+        //Car/CarsFromMake(string make)
         public IActionResult CarsFromMake(string make)
         {
-            var cars = _carSevice.CarFromMake(make);
+            var cars = _carSevice.GetCarFromMake(make);
+            return View(cars);
+        }
+
+        //GET
+        //Car/Parts/id()
+        public IActionResult Parts(int id)
+        {
+            var cars = _carSevice.GetCarWithItsPartsById(id);
             return View(cars);
         }
     }

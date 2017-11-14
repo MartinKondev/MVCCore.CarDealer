@@ -15,6 +15,26 @@ namespace CarDealer.Services
         {
         }
 
+        public CustomerWithBuysModel GetCustomerWithBuysById(int id)
+        {
+            return db
+                .Customers
+                .Where(c => c.Id == id)
+                .Select(customer =>
+                    new CustomerWithBuysModel
+                    {
+                        Name = customer.Name,
+                        BoughtCarsCount = customer.Sales.Count(),
+                        TotalMoneySpent = customer.Sales.Sum(s => s.Car.Parts.Sum(p => (p.Part.Price - p.Part.Price * s.Discount))).Value
+                    })
+                    .FirstOrDefault();             
+        }
+
+        private void sumParts(ref decimal sum, Part p)
+        {
+            sum += p.Quantity * p.Price.Value;
+        }
+
         public IList<CustomerModel> OrderedCustomers(SortOrder sortOrder)
         {
             var customersQuery = db.Customers.AsQueryable();
@@ -28,7 +48,7 @@ namespace CarDealer.Services
                     break;
                 default:
                     break;
-                    
+
             }
 
             return customersQuery
@@ -39,6 +59,6 @@ namespace CarDealer.Services
                     IsYoungDriver = c.IsYoungDriver
                 })
                 .ToList();
-        }     
+        }
     }
 }

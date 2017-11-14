@@ -1,4 +1,5 @@
 ﻿using CarDealer.Domain;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,7 @@ namespace CarDealer.Data
         }
 
         public async Task Seed()
-        {
+        {   
             if (!context.Cars.Any())
             {
                 await context.AddRangeAsync(_cars());
@@ -101,18 +102,18 @@ namespace CarDealer.Data
         {
             return new List<Sale>
             {
-                new Sale { Discount = 0.3, Car_Id = firstCarId, Customer_Id = firstCustomerId + 1 },
-                new Sale { Discount = 0.2, Car_Id = firstCarId + 1, Customer_Id = firstCustomerId + 2 },
-                new Sale { Discount = 0.4, Car_Id = firstCarId + 2, Customer_Id = firstCustomerId + 3 },
-                new Sale { Discount = 0.25, Car_Id = firstCarId + 3, Customer_Id = firstCustomerId + 4 },
-                new Sale { Discount = 0.10, Car_Id = firstCarId + 4, Customer_Id = firstCustomerId + 5 },
-                new Sale { Discount = 0.13, Car_Id = firstCarId + 5, Customer_Id = firstCustomerId + 0 },
-                new Sale { Discount = 0.15, Car_Id = firstCarId + 6, Customer_Id = firstCustomerId + 1 },
-                new Sale { Discount = 0.30, Car_Id = firstCarId + 8, Customer_Id = firstCustomerId + 2 },
-                new Sale { Discount = 0.2, Car_Id = firstCarId + 9, Customer_Id = firstCustomerId + 3 },
-                new Sale { Discount = 0.1, Car_Id = firstCarId + 5, Customer_Id = firstCustomerId + 4 },
-                new Sale { Discount = 0.2, Car_Id = firstCarId + 7, Customer_Id = firstCustomerId + 5 },
-                new Sale { Discount = 0.51, Car_Id = firstCarId, Customer_Id = firstCustomerId + 0 },
+                new Sale { Discount = 0.3m, Car_Id = firstCarId, Customer_Id = firstCustomerId + 1 },
+                new Sale { Discount = 0.2m, Car_Id = firstCarId + 1, Customer_Id = firstCustomerId + 2 },
+                new Sale { Discount = 0.4m, Car_Id = firstCarId + 2, Customer_Id = firstCustomerId + 3 },
+                new Sale { Discount = 0.25m, Car_Id = firstCarId + 3, Customer_Id = firstCustomerId + 4 },
+                new Sale { Discount = 0.10m, Car_Id = firstCarId + 4, Customer_Id = firstCustomerId + 5 },
+                new Sale { Discount = 0.13m, Car_Id = firstCarId + 5, Customer_Id = firstCustomerId + 0 },
+                new Sale { Discount = 0.15m, Car_Id = firstCarId + 6, Customer_Id = firstCustomerId + 1 },
+                new Sale { Discount = 0.30m, Car_Id = firstCarId + 8, Customer_Id = firstCustomerId + 2 },
+                new Sale { Discount = 0.2m, Car_Id = firstCarId + 9, Customer_Id = firstCustomerId + 3 },
+                new Sale { Discount = 0.1m, Car_Id = firstCarId + 5, Customer_Id = firstCustomerId + 4 },
+                new Sale { Discount = 0.2m, Car_Id = firstCarId + 7, Customer_Id = firstCustomerId + 5 },
+                new Sale { Discount = 0.51m, Car_Id = firstCarId, Customer_Id = firstCustomerId + 0 },
             };
         }
 
@@ -172,6 +173,17 @@ namespace CarDealer.Data
                 new PartCar{Part_Id = firstPartId + 6, Car_Id = firstCarId +  10},
                 new PartCar{Part_Id = firstPartId, Car_Id = firstCarId}
             };
+        }
+
+        private void ResetDb(CarDealerDbContext _context)
+        {
+            var deleteCommand = "DELETE FROM dbo.{0} ";
+            _context.Database.ExecuteSqlCommand(string.Format(deleteCommand, "Cars"));
+            _context.Database.ExecuteSqlCommand(string.Format(deleteCommand, "Customers"));
+            _context.Database.ExecuteSqlCommand(string.Format(deleteCommand, "Suppliers"));
+            _context.Database.ExecuteSqlCommand(string.Format(deleteCommand, "Sales"));
+            _context.Database.ExecuteSqlCommand(string.Format(deleteCommand, "Parts"));
+            _context.Database.ExecuteSqlCommand(string.Format(deleteCommand, "PartCars"));
         }
     }
 }

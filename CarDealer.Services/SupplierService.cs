@@ -13,18 +13,18 @@ namespace CarDealer.Services
         {
         }
 
-        public IEnumerable<SupplierModel> GetSuppliers(string type)
+        public IEnumerable<SupplierModel> GetSuppliers(bool isLocal)
         {
             var suppliers = db
                 .Suppliers
                 .AsQueryable();
 
-            switch (type)
+            switch (isLocal)
             {
-                case "Local":
+                case true:
                     suppliers = suppliers.Where(s => !s.IsImporter);
                     break;
-                case "Importer":
+                case false:
                     suppliers = suppliers.Where(s => s.IsImporter);
                     break;
                 default:

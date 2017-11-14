@@ -8,6 +8,8 @@ namespace CarDealer.Services
 {
     public interface ICarService
     {
-        IEnumerable<CarModel> CarFromMake(string carMake);
+        IEnumerable<CarModel> GetCarFromMake(string carMake);
+
+        IEnumerable<CarWithItsPartsModel> GetCarWithItsPartsById(int Id);
     }
 }

@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using CarDealer.App.Enums;
 
 namespace CarDealer.App.Controllers
 {
@@ -17,9 +16,14 @@ namespace CarDealer.App.Controllers
             _supplierService = supplierService;
         }
 
-        public IActionResult Index(SupplierTypeEnum supplierType)
+        public IActionResult Local()
         {
-            return View(_supplierService.GetSuppliers(supplierType.ToString()));
+            return View("Index", _supplierService.GetSuppliers(true));
+        }
+
+        public IActionResult Importers()
+        {
+            return View("Index", _supplierService.GetSuppliers(false));
         }
     }
 }

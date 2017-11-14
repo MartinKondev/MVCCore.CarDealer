@@ -9,5 +9,7 @@ namespace CarDealer.Services
     public interface ICustomerService
     {
         IList<CustomerModel> OrderedCustomers(SortOrder sortOrder);
+
+        CustomerWithBuysModel GetCustomerWithBuysById(int id);
     }
 }

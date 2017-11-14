@@ -7,6 +7,6 @@ namespace CarDealer.Services
 {
     public interface ISupplierService
     {
-        IEnumerable<SupplierModel> GetSuppliers(string type);
+        IEnumerable<SupplierModel> GetSuppliers(bool isLocal);
     }
 }
