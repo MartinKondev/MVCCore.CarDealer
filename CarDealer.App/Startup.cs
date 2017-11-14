@@ -30,6 +30,7 @@ namespace CarDealer.App
 
             services.AddTransient<ICustomerService, CustomerService>();
             services.AddTransient<ICarService, CarService>();
+            services.AddTransient<ISupplierService, SupplierService>();
 
             services.AddMvc();
         }
@@ -52,14 +53,19 @@ namespace CarDealer.App
             app.UseStaticFiles();
 
             app.UseMvc(routes =>
-            {
+              {
+            //    routes.MapRoute(
+            //        name: "suppliersDefault",
+            //        template: "suppliers/{action=Index}/{supplierType}"),
+            //        a;
+
                 routes.MapRoute(
                     name: "carsByMake",
-                    template: "{contrroller=car}/{action=CarsFromMake}/{make}");
+                    template: "car/{action=CarsFromMake}/{make}");
 
                 routes.MapRoute(
                     name: "customers",
-                    template: "{controller=customer}/{action=all}/{sortOrder}");
+                    template: "customer/{action=all}/{sortOrder}");
 
                 routes.MapRoute(
                     name: "default",

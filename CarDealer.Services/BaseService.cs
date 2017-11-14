@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CarDealer.Services
 {
-    public class BaseService
+    public abstract class BaseService
     {
         protected readonly CarDealerDbContext db;
 
