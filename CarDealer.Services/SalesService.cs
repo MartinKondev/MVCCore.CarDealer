@@ -35,7 +35,7 @@ namespace CarDealer.Services
 
         public SalesModel GetSaleById(int id)
         {
-            return db
+            var sale = db
                 .Sales
                 .Where(s => s.Id == id)
                 .Select(s => new SalesModel
@@ -51,6 +51,10 @@ namespace CarDealer.Services
                     Discount = s.Discount
                 })
                 .FirstOrDefault();
+
+            sale.Price = sale.Price - sale.Price * sale.Discount;
+
+                return sale;
         }
 
         public IEnumerable<SalesModel> GetDiscountedSales()

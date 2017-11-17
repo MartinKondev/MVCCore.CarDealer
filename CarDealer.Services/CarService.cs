@@ -5,6 +5,7 @@ using CarDealer.Data;
 using CarDealer.Domain;
 using System.Linq;
 using CarDealer.Services.Models;
+using System.Reflection;
 
 namespace CarDealer.Services
 {
@@ -12,6 +13,19 @@ namespace CarDealer.Services
     {
         public CarService(CarDealerDbContext _db) : base(_db)
         {
+        }
+
+        public IEnumerable<CarModel>GetAllCars()
+        {
+            var cars = db.Cars.Select(c => new CarModel
+            {
+                Make = c.Make,
+                Model = c.Model,
+                TravelledDistance = c.TravelledDistance
+            })
+            .ToList();
+
+            return cars;
         }
 
         public IEnumerable<CarWithItsPartsModel> GetCarWithItsPartsById(int Id)

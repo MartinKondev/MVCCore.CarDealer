@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace CarDealer.App.Controllers
 {
+    [Route("Customer")]
     public class CustomerController : Controller
     {
         private readonly ICustomerService _customerService;
@@ -28,7 +29,9 @@ namespace CarDealer.App.Controllers
         }
 
         //GET
-        //Customer/all
+        //Customer/all/...
+        [Route("All/accending")]
+        [Route("All/deccending")]
         public IActionResult All(SortOrder sortOrder)
         {
             var result = _customerService.OrderedCustomers(sortOrder);

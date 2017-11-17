@@ -54,22 +54,22 @@ namespace CarDealer.App
 
             app.UseMvc(routes =>
               {
-                routes.MapRoute(
-                    name: "carsByMake",
-                    template: "car/{action=CarsFromMake}/{make}");
+                  //routes.MapRoute(
+                  //    name: "carsByMake",
+                  //    template: "car/{action=CarsFromMake}/{make}");
 
-                  routes.MapRoute(
-                      name: "customersById",
-                      template: "customer/index/{id}");
+                  //  routes.MapRoute(
+                  //      name: "customersById",
+                  //      template: "customer/index/{id}");
 
-                  routes.MapRoute(
-                      name: "customers",
-                      template: "customer/{action=all}/{sortOrder}");
+                  //  routes.MapRoute(
+                  //      name: "customers",
+                  //      template: "customer/{action=all}/{sortOrder}");
 
                   routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
-            });
+              });
 
             //dbInitializer.Seed().Wait();
         }
