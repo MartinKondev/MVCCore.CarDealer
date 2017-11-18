@@ -11,5 +11,11 @@ namespace CarDealer.Services
         IEnumerable<CustomerModel> OrderedCustomers(SortOrder sortOrder);
 
         CustomerWithBuysModel GetCustomerWithBuysById(int id);
+
+        int AddCustomer(CustomerModel customer);
+
+        CustomerModel GetCustomerForEdit(int id);
+
+        CustomerModel EditCustomer(CustomerModel customer);
     }
 }
