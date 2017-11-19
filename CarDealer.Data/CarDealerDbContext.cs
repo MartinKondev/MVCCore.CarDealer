@@ -2,10 +2,17 @@
 {
     using Domain;
     using Microsoft.EntityFrameworkCore;
+    using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore;
 
-    public class CarDealerDbContext : DbContext
+    public class CarDealerDbContext : IdentityDbContext<User>
     {
-        public CarDealerDbContext(DbContextOptions options) : base(options) { }
+        public CarDealerDbContext(DbContextOptions<CarDealerDbContext> options) : base(options) { }
+
+        //public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        //    : base(options)
+        //{
+        //}
 
         public DbSet<Car> Cars { get; set; }
 

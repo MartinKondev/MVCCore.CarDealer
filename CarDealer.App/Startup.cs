@@ -9,6 +9,9 @@ using Microsoft.Extensions.DependencyInjection;
 using CarDealer.Data;
 using Microsoft.EntityFrameworkCore;
 using CarDealer.Services;
+using CarDealer.App.Models;
+using Microsoft.AspNetCore.Identity;
+using CarDealer.Domain;
 
 namespace CarDealer.App
 {
@@ -27,6 +30,12 @@ namespace CarDealer.App
             services.AddTransient<DBInitializer>();
             services.AddDbContext<CarDealerDbContext>(o => o.
                 UseSqlServer("Server=(localdb)\\mssqllocaldb;Initial Catalog=CarDealer;Trusted_Connection=True;MultipleActiveResultSets=true"));
+
+            services.AddIdentity<User, IdentityRole>()
+                    .AddEntityFrameworkStores<CarDealerDbContext>()
+                    .AddDefaultTokenProviders();
+
+
             services.AddTransient<ICustomerService, CustomerService>();
             services.AddTransient<ICarService, CarService>();
             services.AddTransient<ISupplierService, SupplierService>();
@@ -36,7 +45,7 @@ namespace CarDealer.App
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, 
+        public void Configure(IApplicationBuilder app,
                                 IHostingEnvironment env,
                                 DBInitializer dbInitializer)
         {

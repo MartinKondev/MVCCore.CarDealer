@@ -35,6 +35,7 @@
                     <li><a asp-area="" asp-controller="Sales" asp-action="">All Sles</a></li>
                     <li><a asp-area="" asp-controller="Cars" asp-action="">All Cars</a></li>
                 </ul>
+                @await Html.PartialAsync("_LoginPartial")
             </div>
         </div>
     </nav>
@@ -42,7 +43,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2017 - CoreWebApplication</p>
+            <p>&copy; 2017 - Smarto Badass</p>
         </footer>
     </div>
 
